@@ -1,0 +1,31 @@
+[
+  {
+    "id": 1,
+    "title": "Codeyaan - Learning Management System",
+    "description": "Codeyaan is a modern learning platform focused on building strong full stack development skills through practical, real-world projects.",
+    "tags": ["Next.js", "Node.js", "MongoDB", "Tailwind", "Express", "JWT", "AWS" ,"Docker"],
+    "date": "Dec 2025",
+    "githubUrl": "https://github.com/rvcode-space-hub/learning_management_system",
+    "liveUrl": "https://codeyaan.netlify.app/",
+    "docUrl": "https://docs.codeyaan.com/"
+
+  },
+  {
+    "id": 2,
+    "title": "LabxCode",
+    "description": "LabXCode is a technology-driven IT company providing custom software development, web solutions, and digital innovation for modern businesses.",
+    "tags": ["Next.js", "MongoDB", "Nodemail"],
+    "date": "Nov 2025",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://labxcode.netlify.app/"
+  },
+  {
+    "id": 3,
+    "title": "Weather Dashboard",
+    "description": "Real-time weather tracking dashboard with interactive maps and detailed forecasts.",
+    "tags": ["React", "API", "Tailwind"],
+    "date": "Oct 2025",
+    "githubUrl": "https://github.com",
+    "liveUrl": "https://example.com"
+  }
+]
