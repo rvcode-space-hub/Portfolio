@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { Github, ExternalLink, Calendar, FileInput } from "lucide-react";
 import projects from "../utils/projects.json";
 
@@ -11,23 +12,46 @@ export default function CardSection() {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
+        >
           <h2 className="text-4xl font-bold text-white">
             My <span className="text-blue-500">Projects</span>
           </h2>
           <p className="text-gray-400 mt-2 text-sm">
             Some of my recent backend & full-stack work
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.12 }
+            }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {projects.map((card) => {
             const isActive = activeCard === card.id;
 
             return (
-              <div
+              <motion.div
                 key={card.id}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                transition={{ duration: 0.45 }}
+                whileHover={{ y: -8 }}
                 onClick={() =>
                   setActiveCard(isActive ? null : card.id)
                 }
@@ -77,14 +101,20 @@ export default function CardSection() {
                   <ActionBtn href={card.liveUrl} icon={ExternalLink} label="Live" />
                   <ActionBtn href={card.docUrl} icon={FileInput} label="Doc" />
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
 
       {/* ================= CTA ================= */}
-      <div className="relative mt-24 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="relative mt-24 px-4"
+      >
 
         {/* divider */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[55%] h-px
@@ -111,24 +141,28 @@ export default function CardSection() {
           </p>
 
           <div className="flex justify-center gap-5 flex-wrap">
-            <a
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               href="#projects"
               className="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700
               transition font-semibold shadow-lg shadow-blue-600/40"
             >
               View Projects
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
               href="/resume"
               className="px-7 py-3 rounded-xl border border-blue-500/40
               text-blue-400 hover:bg-blue-500/10 transition font-semibold"
             >
               Download Resume
-            </a>
+            </motion.a>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -136,7 +170,8 @@ export default function CardSection() {
 /* Reusable button */
 function ActionBtn({ href, icon: Icon, label }) {
   return (
-    <a
+    <motion.a
+      whileHover={{ scale: 1.05 }}
       href={href}
       target="_blank"
       onClick={(e) => e.stopPropagation()}
@@ -145,6 +180,6 @@ function ActionBtn({ href, icon: Icon, label }) {
     >
       <Icon size={15} className="inline mr-1" />
       {label}
-    </a>
+    </motion.a>
   );
 }

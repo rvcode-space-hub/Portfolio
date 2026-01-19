@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import {
   Send,
   Mail,
@@ -35,16 +36,27 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="bg-linear-to-br from-gray-900 via-blue-950 to-black py-20 px-4">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="bg-linear-to-br from-gray-900 via-blue-950 to-black py-20 px-4"
+    >
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
 
         {/* LEFT CONTENT */}
-        <div className="text-white">
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-white"
+        >
           <h2 className="text-2xl md:text-4xl font-bold mb-4">
             Let’s Work Together
           </h2>
 
-          <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-xl ">
+          <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-xl">
             Looking for a backend developer who can build scalable APIs,
             secure authentication systems, and production-ready backend
             solutions?
@@ -52,8 +64,7 @@ export default function ContactForm() {
 
           <p className="text-gray-300 mb-8 text-sm md:text-xl leading-relaxed">
             I specialize in Node.js, NestJS, databases, and cloud-based
-            backend systems. Feel free to reach out for projects,
-            collaborations, or opportunities.
+            backend systems.
           </p>
 
           <div className="space-y-3 text-sm md:text-lg text-gray-300">
@@ -70,11 +81,15 @@ export default function ContactForm() {
               Usually responds within 24 hours
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* FORM */}
-        <div className="bg-white rounded-xl shadow-xl p-6 border border-gray-200 space-y-4">
-
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="bg-white rounded-xl shadow-xl p-6 border border-gray-200 space-y-4"
+        >
           <div className="text-center mb-4">
             <h3 className="text-2xl font-bold text-gray-900">
               Get In Touch
@@ -115,7 +130,7 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Subject (Dropdown) */}
+          {/* Subject */}
           <div>
             <label className="text-sm font-medium text-gray-700">Subject</label>
             <select
@@ -141,12 +156,13 @@ export default function ContactForm() {
               value={formData.message}
               onChange={handleChange}
               className="w-full mt-1 py-2 px-3 border rounded-md focus:ring-2 focus:ring-blue-500 resize-none"
-              placeholder="Tell me about your project..."
             />
           </div>
 
           {/* Button */}
-          <button
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={handleSubmit}
             disabled={loading}
             className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center gap-2 font-semibold"
@@ -157,15 +173,19 @@ export default function ContactForm() {
                 Send Message
               </>
             )}
-          </button>
+          </motion.button>
 
           {status === 'success' && (
-            <p className="text-sm text-green-600 text-center">
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-sm text-green-600 text-center"
+            >
               Thanks for reaching out! I’ll get back to you soon 🚀
-            </p>
+            </motion.p>
           )}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

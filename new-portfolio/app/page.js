@@ -5,15 +5,8 @@ import CardSection from '../components/CardSection.jsx'
 export default function page() {
   return (
     <div>
-
-
-      <div>
-        <HeroSection />
-      </div>
-
-      <div>
-        <CardSection />
-      </div>
+      <HeroSection />
+      <CardSection />
     </div>
   )
 }
