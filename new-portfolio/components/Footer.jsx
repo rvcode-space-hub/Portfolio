@@ -31,11 +31,11 @@ export default function Footer() {
               Ravi Shankar Singh
             </h3>
 
-            <p className="text-gray-400 text-xs md:text-lg mt-1">
+            <p className="text-gray-400 text-base md:text-lg mt-1">
               Backend Developer • System Design • Scalable Architecture
             </p>
 
-            <p className="text-gray-400 text-sm md:text-lg mt-1">
+            <p className="text-gray-400 text-base md:text-lg mt-1">
               Focused on performance, reliability, and clean backend systems
             </p>
           </motion.div>

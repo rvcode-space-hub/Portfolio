@@ -25,16 +25,16 @@ export default function HeroSection() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+          <h1 className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">
             Hi, I'm <br />
             <span className="text-blue-500">Ravi Shankar Singh</span>
           </h1>
 
-          <h2 className="text-2xl font-semibold text-gray-300 mb-6">
+          <h2 className="text-xl md:text-2xl  font-semibold text-gray-300 mb-6">
             Backend Developer • Node.js • Cloud & APIs
           </h2>
 
-          <p className="text-gray-300 text-lg leading-relaxed max-w-xl mb-4">
+          <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-xl mb-4">
             I build{" "}
             <span className="text-blue-400">
               scalable, secure, and high-performance
@@ -85,7 +85,6 @@ export default function HeroSection() {
             transition={{ type: "spring", stiffness: 200 }}
             className="relative"
           >
-            <div className="absolute inset-0 rounded-full bg-blue-600 blur-3xl opacity-40"></div>
             <Image
               src={profileImg}
               alt="Ravi Shankar Singh"

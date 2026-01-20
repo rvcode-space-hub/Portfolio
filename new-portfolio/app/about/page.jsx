@@ -4,65 +4,6 @@
 import React from "react";
 import { motion } from "motion/react";
 
-/* ---------------- BADGE MAP (shields.io) ---------------- */
-const skillBadges = {
-  "Node.js":
-    "https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white",
-  "Express.js":
-    "https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white",
-  NestJS:
-    "https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white",
-  "REST APIs":
-    "https://img.shields.io/badge/REST-API-005571?style=for-the-badge",
-  Microservices:
-    "https://img.shields.io/badge/Microservices-FF6F00?style=for-the-badge",
-  JWT:
-    "https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens",
-  OAuth2:
-    "https://img.shields.io/badge/OAuth2-3EAAAF?style=for-the-badge",
-
-  MongoDB:
-    "https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white",
-  PostgreSQL:
-    "https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white",
-  MySQL:
-    "https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white",
-  Redis:
-    "https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white",
-
-  JavaScript:
-    "https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black",
-  TypeScript:
-    "https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white",
-  "React.js":
-    "https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black",
-  "Next.js":
-    "https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white",
-  HTML:
-    "https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white",
-  CSS:
-    "https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white",
-  "Tailwind CSS":
-    "https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white",
-
-  Docker:
-    "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white",
-  "AWS Cloud":
-    "https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white",
-  Git:
-    "https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white",
-  GitHub:
-    "https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white",
-  Postman:
-    "https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white",
-  Vercel:
-    "https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white",
-  Render:
-    "https://img.shields.io/badge/Render-46E3B7?style=for-the-badge",
-  RabbitMQ:
-    "https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white",
-};
-
 /* ---------------- SKILL CATEGORIES ---------------- */
 const skillCategories = {
   "Core Backend": [
@@ -70,6 +11,7 @@ const skillCategories = {
     "Express.js",
     "NestJS",
     "REST APIs",
+    "Java",
     "Microservices",
     "JWT",
     "OAuth2",
@@ -108,9 +50,49 @@ const skillCategories = {
   ],
 };
 
+/* ---------------- ICON MAP (SimpleIcons CDN) ---------------- */
+const skillIconMap = {
+  "Node.js": "node.js",
+  "Express.js": "express",
+  "NestJS": "nestjs",
+  "REST APIs": "fastapi",
+  "Java": "java",
+  "Microservices": "kubernetes",
+  "JWT": "jsonwebtokens",
+  "OAuth2": "auth0",
+  "API Security": "cloudflare",
+
+  "MongoDB": "mongodb",
+  "PostgreSQL": "postgresql",
+  "MySQL": "mysql",
+  "Redis": "redis",
+  "Database Normalization": "mysql",
+
+  "AWS Cloud": "amazonaws",
+  "Docker": "docker",
+  "CI/CD Pipelines": "githubactions",
+  "Cloud Deployment": "vercel",
+  "Server Optimization": "nginx",
+
+  "JavaScript": "javascript",
+  "TypeScript": "typescript",
+  "React.js": "react",
+  "Next.js": "nextdotjs",
+  "HTML": "html5",
+  "CSS": "css",
+  "Tailwind CSS": "tailwindcss",
+
+  "Git": "git",
+  "GitHub": "github",
+  "Postman": "postman",
+  "Render": "render",
+  "Vercel": "vercel",
+  "RabbitMQ": "rabbitmq",
+};
+
 export default function AboutPage() {
   return (
-    <section className="bg-black text-white min-h-screen">
+    <section className="bg-black text-white min-h-screen py-14 px-4">
       {/* ================= HERO ================= */}
       <div className="relative overflow-hidden">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-175 h-175 bg-blue-600/20 blur-[160px]" />
@@ -121,11 +103,11 @@ export default function AboutPage() {
           transition={{ duration: 0.6 }}
           className="relative max-w-6xl mx-auto px-6 py-28 text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
+          <h1 className="text-3xl md:text-6xl font-extrabold mb-6">
             About <span className="text-blue-500">Me</span>
           </h1>
 
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             I'm{" "}
             <span className="text-blue-400 font-semibold">
               Ravi Shankar Singh
@@ -145,9 +127,11 @@ export default function AboutPage() {
         transition={{ duration: 0.5 }}
         className="max-w-6xl mx-auto px-6 py-20"
       >
-        <h2 className="text-3xl font-bold text-blue-500 mb-6">My Journey</h2>
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-6">
+          My Journey
+        </h2>
 
-        <p className="text-gray-300 text-lg leading-relaxed max-w-4xl">
+        <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-4xl">
           I started my development journey with web technologies and gradually
           discovered my passion for backend development, where system design,
           performance optimization, and scalability play a critical role.
@@ -164,82 +148,116 @@ export default function AboutPage() {
       </motion.div>
 
       {/* ================= SKILLS ================= */}
-<div className="max-w-7xl mx-auto px-6 py-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-12 text-center">
-          Technical Skills
-        </h2>
+  <div className="max-w-7xl mx-auto px-6 py-8 bg-neutral-950 rounded-4xl">
+  <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-16 text-center">
+    Technical Skills
+  </h2>
 
-        <div className="space-y-14">
-          {Object.entries(skillCategories).map(([category, skills]) => (
+  <div className="space-y-20">
+    {Object.entries(skillCategories).map(([category, skills]) => (
+      <motion.div
+        key={category}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.45 }}
+      >
+        {/* CATEGORY TITLE */}
+        <h3 className="text-lg md:text-xl font-semibold mb-10 text-gray-200 text-center md:text-left">
+          {category}
+        </h3>
+
+        {/* SKILLS GRID */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-10 gap-y-12">
+          {skills.map((skill) => (
             <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
+              key={skill}
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 260 }}
+              className="group flex flex-col items-center"
             >
-              <h3 className="text-xl font-semibold mb-6">{category}</h3>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-                {skills.map((skill) => (
-                  <motion.div
-                    key={skill}
-                    whileHover={{ scale: 1.05, y: -4 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="flex w-20 h-20 items-center justify-center p-4  rounded-xl
-                               bg-white/5 border border-blue-500/20
-                               hover:border-blue-500 hover:bg-blue-500/10"
-                  >
-                    {skillBadges[skill] ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={skillBadges[skill]}
-                        alt={skill}
-                        className="h-8 w-auto"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <span className="text-gray-300 text-sm font-medium">
-                        {skill}
-                      </span>
-                    )}
-                  </motion.div>
-                ))}
+              {/* ICON CONTAINER */}
+              <div
+                className="
+                  w-16 h-16 md:w-18 md:h-18 rounded-xl
+                  bg-white/5
+                  border border-white/10
+                  flex items-center justify-center
+                
+                "
+              >
+                {skillIconMap[skill] && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={`https://cdn.simpleicons.org/${skillIconMap[skill]}`}
+                    alt={skill}
+                    loading="lazy"
+                    className="
+                      w-8 h-8 md:w-9 md:h-9
+                      
+                    "
+                  />
+                )}
               </div>
+
+              {/* SKILL NAME */}
+              <span
+                className="
+                  mt-3 text-xs md:text-sm
+                  text-gray-400
+                  text-center
+                  group-hover:text-blue-400
+                  transition-colors duration-300
+                "
+              >
+                {skill}
+              </span>
             </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
+
 
       {/* ================= CTA ================= */}
-      <div className="relative py-24">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative max-w-4xl mx-auto text-center px-10 py-16
-                     bg-white/5 backdrop-blur-xl
-                     border border-blue-500/20 rounded-3xl"
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+        className="relative mt-24 px-4"
+      >
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[55%] h-px bg-linear-to-r from-transparent via-blue-500/40 to-transparent" />
+
+        <div className="absolute inset-0 flex justify-center pointer-events-none">
+          <div className="w-130 h-65 bg-blue-600/20 blur-[120px] rounded-full" />
+        </div>
+
+        <div
+          className="relative max-w-4xl mx-auto text-center
+          px-8 py-14 md:px-12
+          bg-white/5 backdrop-blur-xl
+          border border-blue-500/20 rounded-3xl"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white">
             Let’s Build Something{" "}
             <span className="text-blue-500">Great</span>
           </h2>
 
-          <p className="text-gray-300 max-w-2xl mx-auto mb-10">
+          <p className="text-gray-300 max-w-2xl mx-auto mb-8 text-sm md:text-base">
             I’m actively looking for backend development opportunities where I
             can contribute to real-world systems and grow as an engineer.
           </p>
 
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center gap-5 flex-wrap">
             <motion.a
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              href="/projects"
-              className="px-8 py-3 rounded-xl bg-blue-600 hover:bg-blue-700
-                         transition font-semibold shadow-lg shadow-blue-600/40"
+              href="#projects"
+              className="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700
+              transition font-semibold shadow-lg shadow-blue-600/40"
             >
               View Projects
             </motion.a>
@@ -248,15 +266,14 @@ export default function AboutPage() {
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               href="/resume"
-              className="px-8 py-3 rounded-xl border border-blue-500/40
-                         text-blue-400 hover:bg-blue-500/10
-                         backdrop-blur transition font-semibold"
+              className="px-7 py-3 rounded-xl border border-blue-500/40
+              text-blue-400 hover:bg-blue-500/10 transition font-semibold"
             >
               Download Resume
             </motion.a>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

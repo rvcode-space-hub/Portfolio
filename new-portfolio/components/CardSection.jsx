@@ -19,10 +19,10 @@ export default function CardSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl font-bold text-white">
+          <h2 className="text-3xl md:text-5xl font-bold text-white">
             My <span className="text-blue-500">Projects</span>
           </h2>
-          <p className="text-gray-400 mt-2 text-sm">
+          <p className="text-gray-400 mt-2 text-sm md:text-lg">
             Some of my recent backend & full-stack work
           </p>
         </motion.div>
