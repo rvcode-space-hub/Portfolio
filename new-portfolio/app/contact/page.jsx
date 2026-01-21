@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import {
@@ -17,22 +18,49 @@ export default function ContactForm() {
     subject: '',
     message: ''
   });
-  const [status, setStatus] = useState('');
+
+  const [status, setStatus] = useState(''); // success | error | ''
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     setStatus('');
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Failed to send message');
+      }
+
       setStatus('success');
-      setLoading(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
       setTimeout(() => setStatus(''), 3000);
-    }, 1500);
+    } catch (error) {
+      console.error('Client Mail Error:', error);
+      setStatus('error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -84,7 +112,8 @@ export default function ContactForm() {
         </motion.div>
 
         {/* FORM */}
-        <motion.div
+        <motion.form
+          onSubmit={handleSubmit}
           initial={{ opacity: 0, y: 40, scale: 0.95 }}
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.6 }}
@@ -108,6 +137,7 @@ export default function ContactForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                required
                 className="w-full pl-9 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
                 placeholder="John Doe"
               />
@@ -124,6 +154,7 @@ export default function ContactForm() {
                 type="email"
                 value={formData.email}
                 onChange={handleChange}
+                required
                 className="w-full pl-9 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
                 placeholder="john@example.com"
               />
@@ -137,6 +168,7 @@ export default function ContactForm() {
               name="subject"
               value={formData.subject}
               onChange={handleChange}
+              required
               className="w-full mt-1 py-2 px-3 border rounded-md focus:ring-2 focus:ring-blue-500"
             >
               <option value="">Select a subject</option>
@@ -155,17 +187,18 @@ export default function ContactForm() {
               rows={4}
               value={formData.message}
               onChange={handleChange}
+              required
               className="w-full mt-1 py-2 px-3 border rounded-md focus:ring-2 focus:ring-blue-500 resize-none"
             />
           </div>
 
           {/* Button */}
           <motion.button
+            type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handleSubmit}
             disabled={loading}
-            className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center gap-2 font-semibold"
+            className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center gap-2 font-semibold disabled:opacity-60"
           >
             {loading ? 'Sending...' : (
               <>
@@ -175,16 +208,19 @@ export default function ContactForm() {
             )}
           </motion.button>
 
+          {/* Status Messages */}
           {status === 'success' && (
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-sm text-green-600 text-center"
-            >
+            <p className="text-sm text-green-600 text-center">
               Thanks for reaching out! I’ll get back to you soon 🚀
-            </motion.p>
+            </p>
           )}
-        </motion.div>
+
+          {status === 'error' && (
+            <p className="text-sm text-red-600 text-center">
+              Something went wrong. Please try again ❌
+            </p>
+          )}
+        </motion.form>
       </div>
     </motion.section>
   );
