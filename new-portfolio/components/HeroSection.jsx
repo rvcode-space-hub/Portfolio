@@ -54,7 +54,7 @@ export default function HeroSection() {
             <motion.a
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
-              href="/resume"
+              href="https://res.cloudinary.com/dgmzre11v/raw/upload/v1770079605/documents/g4k5dbwssfzousl4v4bh"
               className="px-7 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-semibold shadow-lg shadow-blue-600/30"
             >
               View Resume

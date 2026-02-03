@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { motion } from "motion/react"
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail , Brain } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -58,6 +58,7 @@ export default function Footer() {
               { Icon: Github, link: "https://github.com/yourusername", label: "GitHub" },
               { Icon: Linkedin, link: "https://linkedin.com/in/yourusername", label: "LinkedIn" },
               { Icon: Mail, link: "mailto:your.email@example.com", label: "Email" },
+              { Icon: Brain, link: "https://leetcode.com/u/Bholacs-2024/", label: "LeetCode"}
             ].map(({ Icon, link, label }) => (
               <motion.a
                 key={label}

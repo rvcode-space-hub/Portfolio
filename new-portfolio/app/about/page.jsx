@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 
 /* ---------------- SKILL CATEGORIES ---------------- */
 const skillCategories = {
@@ -54,40 +54,40 @@ const skillCategories = {
 const skillIconMap = {
   "Node.js": "node.js",
   "Express.js": "express",
-  "NestJS": "nestjs",
+  NestJS: "nestjs",
   "REST APIs": "fastapi",
-  "Java": "java",
-  "Microservices": "kubernetes",
-  "JWT": "jsonwebtokens",
-  "OAuth2": "auth0",
+  Java: "java",
+  Microservices: "kubernetes",
+  JWT: "jsonwebtokens",
+  OAuth2: "auth0",
   "API Security": "cloudflare",
 
-  "MongoDB": "mongodb",
-  "PostgreSQL": "postgresql",
-  "MySQL": "mysql",
-  "Redis": "redis",
+  MongoDB: "mongodb",
+  PostgreSQL: "postgresql",
+  MySQL: "mysql",
+  Redis: "redis",
   "Database Normalization": "mysql",
 
   "AWS Cloud": "amazonaws",
-  "Docker": "docker",
+  Docker: "docker",
   "CI/CD Pipelines": "githubactions",
   "Cloud Deployment": "vercel",
   "Server Optimization": "nginx",
 
-  "JavaScript": "javascript",
-  "TypeScript": "typescript",
+  JavaScript: "javascript",
+  TypeScript: "typescript",
   "React.js": "react",
   "Next.js": "nextdotjs",
-  "HTML": "html5",
-  "CSS": "css",
+  HTML: "html5",
+  CSS: "css",
   "Tailwind CSS": "tailwindcss",
 
-  "Git": "git",
-  "GitHub": "github",
-  "Postman": "postman",
-  "Render": "render",
-  "Vercel": "vercel",
-  "RabbitMQ": "rabbitmq",
+  Git: "git",
+  GitHub: "github",
+  Postman: "postman",
+  Render: "render",
+  Vercel: "vercel",
+  RabbitMQ: "rabbitmq",
 };
 
 export default function AboutPage() {
@@ -98,9 +98,9 @@ export default function AboutPage() {
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-175 h-175 bg-blue-600/20 blur-[160px]" />
 
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{opacity: 0, y: 40}}
+          animate={{opacity: 1, y: 0}}
+          transition={{duration: 0.6}}
           className="relative max-w-6xl mx-auto px-6 py-28 text-center"
         >
           <h1 className="text-3xl md:text-6xl font-extrabold mb-6">
@@ -121,10 +121,10 @@ export default function AboutPage() {
 
       {/* ================= ABOUT ================= */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
+        initial={{opacity: 0, x: -50}}
+        whileInView={{opacity: 1, x: 0}}
+        viewport={{once: true}}
+        transition={{duration: 0.6, ease: "easeOut"}}
         className="max-w-6xl mx-auto px-6 py-20"
       >
         <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-6">
@@ -133,100 +133,333 @@ export default function AboutPage() {
 
         <p className="text-gray-300 text-base md:text-xl leading-relaxed max-w-4xl">
           I started my development journey with web technologies and gradually
-          discovered my passion for backend development, where system design,
-          performance optimization, and scalability play a critical role.
+          transitioned into backend development, where I enjoy solving problems
+          related to scalability, performance, and system design. I have
+          hands-on experience in building RESTful APIs, designing efficient
+          database schemas, implementing authentication and authorization
+          systems, and developing secure, production-ready backend applications.
+          I enjoy working on real-world problems and turning ideas into reliable
+          backend services.
           <br />
           <br />
-          I enjoy designing RESTful APIs, working with databases, implementing
-          authentication mechanisms, and deploying production-ready backend
-          systems.
+          Through personal and academic projects, I have worked with backend
+          technologies like Node.js, Express, and databases such as MongoDB and
+          PostgreSQL. I also have experience with version control, API testing,
+          and deploying applications in a production-like environment.
           <br />
           <br />
           Currently, I am pursuing a B.Tech in Computer Science Engineering and
-          actively preparing for backend and software engineering roles.
+          actively preparing for backend and software engineering roles. I am
+          continuously improving my skills by building projects, learning system
+          design concepts, and focusing on writing clean, scalable, and
+          maintainable code.
         </p>
       </motion.div>
 
       {/* ================= SKILLS ================= */}
-  <div className="max-w-7xl mx-auto px-6 py-8 bg-neutral-950 rounded-4xl">
-  <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-16 text-center">
-    Technical Skills
-  </h2>
 
-  <div className="space-y-20">
-    {Object.entries(skillCategories).map(([category, skills]) => (
-      <motion.div
-        key={category}
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.45 }}
-      >
-        {/* CATEGORY TITLE */}
-        <h3 className="text-lg md:text-xl font-semibold mb-10 text-gray-200 text-center md:text-left">
-          {category}
-        </h3>
+      <div className="max-w-5xl mx-auto px-6 py-4 md:py-5 bg-neutral-950 rounded-4xl">
+        <h2 className="text-2xl md:text-3xl font-bold text-blue-500 mb-6 text-center">
+          Technical Skills
+        </h2>
 
-        {/* SKILLS GRID */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-x-10 gap-y-12">
-          {skills.map((skill) => (
+        <div className="space-y-14 md:space-y-6">
+          {Object.entries(skillCategories).map(([category, skills]) => (
             <motion.div
-              key={skill}
-              whileHover={{ y: -4 }}
-              transition={{ type: "spring", stiffness: 260 }}
-              className="group flex flex-col items-center"
+              key={category}
+              initial={{opacity: 0, y: 20}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              transition={{duration: 0.4}}
             >
-              {/* ICON CONTAINER */}
-              <div
-                className="
-                  w-16 h-16 md:w-18 md:h-18 rounded-xl
-                  bg-white/5
-                  border border-white/10
-                  flex items-center justify-center
-                
-                "
-              >
-                {skillIconMap[skill] && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={`https://cdn.simpleicons.org/${skillIconMap[skill]}`}
-                    alt={skill}
-                    loading="lazy"
-                    className="
-                      w-8 h-8 md:w-9 md:h-9
-                      
-                    "
-                  />
-                )}
-              </div>
+              {/* CATEGORY TITLE */}
+              <h3 className="text-lg md:text-xl font-semibold mb-6 md:mb-8 text-gray-200 text-center md:text-left">
+                {category}
+              </h3>
 
-              {/* SKILL NAME */}
-              <span
-                className="
-                  mt-3 text-xs md:text-sm
-                  text-gray-400
-                  text-center
-                  group-hover:text-blue-400
-                  transition-colors duration-300
-                "
-              >
-                {skill}
-              </span>
+              {/* SKILLS GRID */}
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-10 gap-x-6 md:gap-x-5 gap-y-5 md:gap-y-8">
+                {skills.map((skill, index) => {
+                  // Direction logic
+                  const motionVariants = {
+                    hidden: {
+                      opacity: 0,
+                      x: index % 3 === 0 ? -30 : index % 3 === 2 ? 30 : 0,
+                      y: index % 3 === 1 ? 30 : 0,
+                    },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      y: 0,
+                    },
+                  };
+
+                  return (
+                    <motion.div
+                      key={skill}
+                      variants={motionVariants}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{once: true}}
+                      transition={{duration: 0.45, ease: "easeOut"}}
+                      whileHover={{y: -4}}
+                      className="group flex flex-col items-center"
+                    >
+                      {/* ICON CONTAINER */}
+                      <div
+                        className="
+                    w-16 h-16 md:w-18 md:h-18 rounded-xl
+                    bg-white/5
+                    border border-white/10
+                    flex items-center justify-center
+                  "
+                      >
+                        {skillIconMap[skill] && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={`https://cdn.simpleicons.org/${skillIconMap[skill]}`}
+                            alt={skill}
+                            loading="lazy"
+                            className="w-8 h-8 md:w-9 md:h-9"
+                          />
+                        )}
+                      </div>
+
+                      {/* SKILL NAME */}
+                      <span
+                        className="
+                    mt-2 text-xs md:text-sm
+                    text-gray-400
+                    text-center
+                    group-hover:text-blue-400
+                    transition-colors duration-300
+                  "
+                      >
+                        {skill}
+                      </span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ================= EXPERIENCE ================= */}
+      <motion.div
+        initial={{opacity: 0}}
+        whileInView={{opacity: 1}}
+        viewport={{once: true}}
+        transition={{duration: 0.6}}
+        className="max-w-6xl mx-auto px-6 py-20"
+      >
+        <motion.h2
+          initial={{y: 20, opacity: 0}}
+          whileInView={{y: 0, opacity: 1}}
+          viewport={{once: true}}
+          transition={{duration: 0.5}}
+          className="text-3xl font-bold text-blue-500 mb-14"
+        >
+          Experience
+        </motion.h2>
+
+        <div className="relative pl-6 space-y-12">
+          {/* Vertical Line */}
+          <div className="absolute left-2 top-0 h-full w-px bg-blue-500/30" />
+
+          {/* CARD WRAPPER */}
+          {[
+            /* Live Project */
+            {
+              dot: "bg-blue-500 shadow-lg shadow-blue-500/50",
+              content: (
+                <>
+                  <h3 className="text-xl font-semibold text-white">
+                    Backend Developer – Remote (Live Project)
+                  </h3>
+                  <p className="text-sm text-blue-400 mt-1">
+                    ZeTheta’s • Jan 2026 – Present
+                  </p>
+                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
+                    <li>
+                      Working on a live remote backend project using{" "}
+                      <span className="text-blue-400 font-medium">
+                        Node.js, Express, MongoDB, Redis, and REST APIs
+                      </span>
+                      .
+                    </li>
+                    <li>
+                      Designing secure and scalable APIs with authentication and
+                      role-based access control.
+                    </li>
+                    <li>
+                      Implementing service-layer architecture and optimized
+                      queries.
+                    </li>
+                    <li>Collaborating remotely using Git-based workflows.</li>
+                  </ul>
+                </>
+              ),
+            },
+
+            /* Backend Intern */
+            {
+              dot: "bg-blue-500/60",
+              content: (
+                <>
+                  <h3 className="text-xl font-semibold">
+                    Backend Developer Intern
+                  </h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Pearl-Thoughts • Jul – Aug 2025
+                  </p>
+                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
+                    <li>Designed scalable RESTful APIs for an LMS platform.</li>
+                    <li>
+                      <span className="text-blue-400 font-medium">Tech:</span>{" "}
+                      Node.js, Express.js, MongoDB, JWT.
+                    </li>
+                    <li>Improved API performance and DB efficiency.</li>
+                  </ul>
+                </>
+              ),
+            },
+
+            /* Web Intern */
+            {
+              dot: "bg-blue-500/40",
+              content: (
+                <>
+                  <h3 className="text-xl font-semibold">
+                    Web Developer Intern
+                  </h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Techsonix • May 2025
+                  </p>
+                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
+                    <li>Built responsive and user-friendly interfaces.</li>
+                    <li>
+                      <span className="text-blue-400 font-medium">Tech:</span>{" "}
+                      React, Tailwind CSS, JavaScript.
+                    </li>
+                  </ul>
+                </>
+              ),
+            },
+
+            /* MIS Operator */
+            {
+              dot: "bg-blue-500/30",
+              content: (
+                <>
+                  <h3 className="text-xl font-semibold">MIS Operator</h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    JKM Security Services • Mar 2022 – Dec 2025
+                  </p>
+                  <ul className="text-gray-300 mt-4 space-y-2 list-disc list-inside">
+                    <li>Prepared daily / weekly / monthly MIS reports.</li>
+                    <li>
+                      Cleaned data using{" "}
+                      <span className="text-blue-400 font-medium">
+                        Excel & Power Query
+                      </span>
+                      .
+                    </li>
+                    <li>
+                      Automated reports (↓ manual work by{" "}
+                      <span className="text-blue-400 font-medium">30%</span>).
+                    </li>
+                  </ul>
+                </>
+              ),
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{opacity: 0, y: 30}}
+              whileInView={{opacity: 1, y: 0}}
+              viewport={{once: true}}
+              transition={{duration: 0.45, delay: i * 0.08}}
+              className="relative"
+            >
+              <motion.span
+                initial={{scale: 0}}
+                whileInView={{scale: 1}}
+                viewport={{once: true}}
+                transition={{type: "spring", stiffness: 100}}
+                className={`absolute -left-1.5 top-2 w-4 h-4 rounded-full ${item.dot}`}
+              />
+
+              <div className="border border-blue-500/20 rounded-2xl p-6 bg-white/5 hover:border-blue-400 transition">
+                {item.content}
+              </div>
             </motion.div>
           ))}
         </div>
       </motion.div>
-    ))}
-  </div>
-</div>
 
+      {/* ================= EDUCATION ================= */}
+      <motion.div
+        initial={{opacity: 0}}
+        whileInView={{opacity: 1}}
+        viewport={{once: true}}
+        transition={{duration: 0.5}}
+        className="max-w-6xl mx-auto px-6 py-20"
+      >
+        <motion.h2
+          initial={{y: 20, opacity: 0}}
+          whileInView={{y: 0, opacity: 1}}
+          viewport={{once: true}}
+          transition={{duration: 0.4}}
+          className="text-3xl font-bold text-blue-500 mb-12"
+        >
+          Education
+        </motion.h2>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* B.Tech – LEFT */}
+          <motion.div
+            initial={{opacity: 0, x: -40}}
+            whileInView={{opacity: 1, x: 0}}
+            viewport={{once: true}}
+            transition={{duration: 0.45}}
+            className="border border-blue-500/20  rounded-2xl p-6 bg-white/5 hover:border-blue-400 transition"
+          >
+            <h3 className="text-xl md:text-2xl font-semibold">
+              B.Tech in Computer Science Engineering
+            </h3>
+            <p className="text-gray-400 mt-2 text-lg">
+              Sanskriti University, Mathura
+            </p>
+            <p className="text-base text-blue-500 ">2025 – Present</p>
+          </motion.div>
+
+          {/* DIPLOMA – RIGHT */}
+          <motion.div
+            initial={{opacity: 0, x: 40}}
+            whileInView={{opacity: 1, x: 0}}
+            viewport={{once: true}}
+            transition={{duration: 0.45, delay: 0.1}}
+            className="border border-blue-500/20 rounded-2xl p-6 bg-white/5 hover:border-blue-400 transition"
+          >
+            <h3 className="text-xl md:text-2xl font-semibold">
+              Diploma in Computer Science Engineering
+            </h3>
+            <p className="text-gray-400 mt-2 text-lg">
+              Arunachal University of Studies, Delhi
+            </p>
+            <p className="text-base text-gray-500">2017 – 2020</p>
+          </motion.div>
+        </div>
+      </motion.div>
 
       {/* ================= CTA ================= */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.2, duration: 0.6 }}
+        initial={{opacity: 0, y: 50}}
+        whileInView={{opacity: 1, y: 0}}
+        viewport={{once: true}}
+        transition={{delay: 0.2, duration: 0.6}}
         className="relative mt-24 px-4"
       >
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[55%] h-px bg-linear-to-r from-transparent via-blue-500/40 to-transparent" />
@@ -242,8 +475,7 @@ export default function AboutPage() {
           border border-blue-500/20 rounded-3xl"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white">
-            Let’s Build Something{" "}
-            <span className="text-blue-500">Great</span>
+            Let’s Build Something <span className="text-blue-500">Great</span>
           </h2>
 
           <p className="text-gray-300 max-w-2xl mx-auto mb-8 text-sm md:text-base">
@@ -253,8 +485,8 @@ export default function AboutPage() {
 
           <div className="flex justify-center gap-5 flex-wrap">
             <motion.a
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{scale: 1.08}}
+              whileTap={{scale: 0.95}}
               href="#projects"
               className="px-7 py-3 rounded-xl bg-blue-600 hover:bg-blue-700
               transition font-semibold shadow-lg shadow-blue-600/40"
@@ -263,8 +495,8 @@ export default function AboutPage() {
             </motion.a>
 
             <motion.a
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{scale: 1.08}}
+              whileTap={{scale: 0.95}}
               href="/resume"
               className="px-7 py-3 rounded-xl border border-blue-500/40
               text-blue-400 hover:bg-blue-500/10 transition font-semibold"
