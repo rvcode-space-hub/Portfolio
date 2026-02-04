@@ -1,29 +1,27 @@
-"use client"
+"use client";
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import {motion} from "motion/react";
 import profileImg from "../assets/RaviShankarSingh.jpeg";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-black text-white overflow-hidden">
-
       {/* TOP BLUE GLOW */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.2 }}
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        transition={{duration: 1.2}}
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-175 h-175 bg-blue-600/20 blur-[160px]"
       />
 
       <div className="relative max-w-7xl mx-auto px-6 py-11 grid md:grid-cols-2 gap-16 items-center">
-
         {/* LEFT CONTENT */}
         <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{opacity: 0, x: -60}}
+          animate={{opacity: 1, x: 0}}
+          transition={{duration: 0.7}}
         >
           <h1 className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight">
             Hi, I'm <br />
@@ -39,7 +37,8 @@ export default function HeroSection() {
             <span className="text-blue-400">
               scalable, secure, and high-performance
             </span>{" "}
-            backend systems using Node.js, NestJS, and modern cloud technologies.
+            backend systems using Node.js, NestJS, and modern cloud
+            technologies.
           </p>
 
           <p className="text-gray-300 text-lg max-w-xl mb-10">
@@ -47,22 +46,23 @@ export default function HeroSection() {
             <span className="text-blue-400">
               Computer Science Engineering (Pursuing)
             </span>{" "}
-            with hands-on experience building LMS and enterprise backend systems.
+            with hands-on experience building LMS and enterprise backend
+            systems.
           </p>
 
           <div className="flex gap-5">
             <motion.a
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
-              href="https://res.cloudinary.com/dgmzre11v/raw/upload/v1770079605/documents/g4k5dbwssfzousl4v4bh"
+              whileHover={{scale: 1.08}}
+              whileTap={{scale: 0.95}}
+              href="https://res.cloudinary.com/dgmzre11v/raw/upload/v1770189431/documents/document_1770189445292"
               className="px-7 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition font-semibold shadow-lg shadow-blue-600/30"
             >
               View Resume
             </motion.a>
 
             <motion.a
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{scale: 1.08}}
+              whileTap={{scale: 0.95}}
               href="#projects"
               className="px-7 py-3 rounded-lg border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition font-semibold"
             >
@@ -73,16 +73,15 @@ export default function HeroSection() {
 
         {/* RIGHT SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
+          initial={{opacity: 0, x: 60}}
+          animate={{opacity: 1, x: 0}}
+          transition={{duration: 0.7, delay: 0.2}}
           className="flex flex-col gap-8 items-center"
         >
-
           {/* PROFILE IMAGE */}
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 200 }}
+            whileHover={{scale: 1.05}}
+            transition={{type: "spring", stiffness: 200}}
             className="relative"
           >
             <Image
@@ -97,9 +96,9 @@ export default function HeroSection() {
 
           {/* STATS CARD */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+            initial={{opacity: 0, y: 40}}
+            animate={{opacity: 1, y: 0}}
+            transition={{delay: 0.4, duration: 0.5}}
             className="bg-white/5 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-8 w-full max-w-md"
           >
             <div className="grid grid-cols-3 gap-6 text-center">
@@ -117,7 +116,6 @@ export default function HeroSection() {
               </div>
             </div>
           </motion.div>
-
         </motion.div>
       </div>
     </section>
