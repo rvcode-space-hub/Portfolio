@@ -2,7 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { ModalProvider } from "@/components/ModalContext"; // ✅ FIXED
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,17 +23,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-       className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
-
+        className={`${geistSans.variable} ${geistMono.variable} relative antialiased bg-black text-white`}
       >
-       <Navbar />
-        <main className="pt-24 bg-black">
-          {children}
-        </main>
 
-            <Footer />
+        <ModalProvider>
+          <Navbar />
+
+          <main className="pt-24 bg-black relative z-10">
+            {children}
+          </main>
+
+          <Footer />
+        </ModalProvider>
+
       </body>
-      
     </html>
   );
 }

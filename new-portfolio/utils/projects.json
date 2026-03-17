@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Codeyaan - Learning Management System",
-    "description": "Full-stack LMS built with Next.js, Node.js, and MongoDB, featuring secure authentication, role-based access, REST APIs, and cloud-ready architecture.",
+    "description": "Codeyaan LMS is an enterprise-grade full-stack learning management system built using Next.js, Node.js, and MongoDB. Designed with a microservices architecture, it includes secure JWT authentication, role-based access control, API Gateway, rate limiting, centralized logging (Winston), and scalable REST APIs. The platform is optimized for cloud deployment, high availability, and performance.",
     "tags": [
       "Next.js",
       "Node.js",
@@ -14,7 +14,6 @@
       "Docker",
       "Redis",
       "Motion-UI"
-      
     ],
     "date": "Jan 2026 - Present",
     "githubUrl": "https://github.com/rvcode-space-hub/learning_management_system",
@@ -22,11 +21,10 @@
     "docUrl": "https://docs.codeyaan.com/",
     "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1769979189/ycbfc1ghzjrrh5uggprn.png"
   },
-
   {
     "id": 2,
     "title": "LabxCode",
-    "description": "LabXCode is a fast-growing IT company delivering scalable, modern digital solutions. We transform business ideas into reliable, high-impact software products.",
+    "description": "LabXCode is a results-driven digital solutions company specializing in digital marketing, web development, and scalable software solutions. We help businesses grow their online presence through strategic marketing, high-performance applications, and user-focused design. By combining creativity with modern technology, LabXCode delivers impactful solutions that drive real growth and measurable success.",
     "tags": [
       "Next.js",
       "MongoDB",
@@ -36,8 +34,39 @@
     ],
     "date": "Nov 2025",
     "githubUrl": "https://github.com",
-    "liveUrl": "https://labxcode.netlify.app/",
+    "liveUrl": "https://labxcodewebsolutions.netlify.app/",
     "docUrl": "https://docs.codeyaan.com/",
-    "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1770068242/Portfolio-web-app/mqndhcxcyxheveqkgkhr.png"
+    "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773163149/Portfolio-web-app/file_bhlrzp.png"
+  },
+  {
+    "id": 3,
+    "title": "HoliVibes - Holi Festival Web App",
+    "description": "Built a dynamic Holi greeting web app with Next.js and Tailwind CSS featuring animated gradient backgrounds, glassmorphism UI, and interactive color burst animations using Framer Motion.",
+    "tags": [
+      "Next.js",
+      "Tailwind",
+      "Framer Motion"
+    ],
+    "date": "Mar 2025 - Aug 2025",
+    "githubUrl": "https://github.com/rvcode-space-hub/holi-festival-",
+    "liveUrl": "https://holivibes.netlify.app/anu",
+    "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1772736325/Portfolio-web-app/file_jpjwel.png"
+  },
+  {
+    "id": 4,
+    "title": "TMS: Task Management System",
+    "description": "Developed a full-stack Task Management System using Next.js, Node.js, and Prisma. Implemented secure authentication with JWT (access & refresh tokens), and  Designed a responsive UI with Tailwind CSS and optimized API performance for efficient task tracking and management.",
+    "tags": [
+      "Next.js",
+      "Tailwind",
+      "Framer Motion",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL"
+    ],
+    "date": "Mar 2025 - Aug 2025",
+    "githubUrl": "https://github.com/rvcode-space-hub/holi-festival-",
+    "liveUrl": "https://holivibes.netlify.app/anu",
+    "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1772796249/Portfolio-web-app/file_a2sw2t.png"
   }
 ]

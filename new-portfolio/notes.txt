@@ -1,297 +1,169 @@
 
 
 
-  ----------------------------------------------------------------------------
 
-   {/* Cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full"
-        >
-          {projects.map((card) => {
-            const isActive = activeCard === card.id;
-
-            return (
-              <motion.div
-                key={card.id}
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                transition={{ duration: 0.45 }}
-                whileHover={{ y: -10 }}
-                onClick={() => setActiveCard(isActive ? null : card.id)}
-                className={`group cursor-pointer rounded-2xl p-7
-                  bg-[#0B0F19]
-                  border border-gray-700/80
-                  shadow-[0_20px_60px_rgba(0,0,0,0.6)]
-                  transition-all duration-300
-                  ${isActive
-                    ? "border-blue-500 shadow-[0_0_45px_rgba(59,130,246,0.75)] scale-[1.03]"
-                    : "hover:border-gray-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.45)]"}
-                `}
-              >
-
-                {/* IMAGE */}
-
-                {card.imgUrl && (
-                  <div className=" rounded-xl bg-[rgb(51,98,206)] w-full p-3">
-                    <div className="relative w-full h-76 rounded-2xl overflow-hidden">
-                      <Image
-                        src={card.imgUrl}
-                        alt={card.title}
-                        fill
-                        priority={card.id === 1}
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className={`object-contain
-          transition-transform duration-500 ease-out
-          group-hover:scale-105`}
-                      />
-                    </div>
-                  </div>
-                )}
-
-
-                {/* Date */}
-                <div className="flex items-center gap-2 text-gray-400 text-xs mb-3">
-                  <Calendar size={14} />
-                  {card.date}
-                </div>
-
-                {/* Title */}
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {card.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-gray-400 text-sm mb-5 leading-relaxed">
-                  {card.description}
-                </p>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {card.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs rounded-full
-                      border border-blue-500/30 text-blue-400"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Buttons */}
-                <div className="flex gap-3 text-sm">
-                  {card.githubUrl && (
-                    <ActionBtn href={card.githubUrl} icon={Github} label="Code" />
-                  )}
-                  {card.liveUrl && (
-                    <ActionBtn href={card.liveUrl} icon={ExternalLink} label="Live" />
-                  )}
-                  {card.docUrl && (
-                    <ActionBtn href={card.docUrl} icon={FileInput} label="Doc" />
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-/* Reusable button */
-function ActionBtn({ href, icon: Icon, label }) {
-  return (
-    <motion.a
-      whileHover={{ scale: 1.06 }}
-      whileTap={{ scale: 0.95 }}
-      href={href}
-      target="_blank"
-      onClick={(e) => e.stopPropagation()}
-      className="flex-1 text-center py-2.5 rounded-lg
-      bg-gray-800 hover:bg-gray-700 transition text-white"
-    >
-      <Icon size={15} className="inline mr-1" />
-      {label}
-    </motion.a>
-  );
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
---------------------------------------
 "use client";
-import React, { useState } from "react";
-import { motion } from "motion/react";
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Github, ExternalLink, Calendar, FileInput } from "lucide-react";
-import projects from "../utils/projects.json";
+import certification from "../utils/certification.json";
+import { ChevronRight, ChevronLeft, X , Calendar} from "lucide-react";
 
-export default function CardSection() {
+export default function CertificationsSection() {
   const [activeCard, setActiveCard] = useState(null);
+  const [preview, setPreview] = useState(null);
+  const scrollRef = useRef(null);
+
+  const scroll = (direction) => {
+    scrollRef.current?.scrollBy({
+      left: direction === "left" ? -400 : 400,
+      behavior: "smooth",
+    });
+  };
+  
 
   return (
-    <section
-      id="projects"
-      className="w-full py-16 px-6 md:px-12
-      bg-gradient-to-b from-[#020617] via-[#020617] to-[#020617]"
-    >
-      <div className="max-w-7xl mx-auto">
+    <div className="w-full py-20 px-6 md:px-10 relative">
 
-        {/* ================= HEADER ================= */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
-        >
-          <h2 className="text-3xl md:text-5xl font-bold text-white">
-            My <span className="text-blue-500">Projects</span>
-          </h2>
-          <p className="text-gray-400 mt-4 text-sm md:text-lg max-w-2xl mx-auto">
-            Real-world backend & full-stack projects built with scalable
-            architecture and modern tech stack.
-          </p>
-        </motion.div>
-
-        {/* ================= CARDS ================= */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.12 } },
-          }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
-        >
-          {projects.map((card) => {
-            const isActive = activeCard === card.id;
-
-            return (
-              <motion.div
-                key={card.id}
-                variants={{
-                  hidden: { opacity: 0, y: 40 },
-                  visible: { opacity: 1, y: 0 },
-                }}
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.45 }}
-                onClick={() => setActiveCard(isActive ? null : card.id)}
-                className={`group cursor-pointer rounded-2xl p-5
-                  bg-[#0B1220]
-                  border border-white/10
-                  shadow-[0_20px_50px_rgba(0,0,0,0.6)]
-                  transition-all duration-300
-                  ${isActive
-                    ? "border-blue-500/70 shadow-[0_0_45px_rgba(59,130,246,0.6)] scale-[1.02]"
-                    : "hover:border-white/20 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)]"
-                  }
-                `}
-              >
-
-                {/* ================= IMAGE ================= */}
-                {card.imgUrl && (
-                  <div className="relative rounded-xl overflow-hidden mb-4">
-                    <div className="relative w-full aspect-[2/1]">
-                      <Image
-                        src={card.imgUrl}
-                        alt={card.title}
-                        fill
-                        priority={card.id === 1}
-                        sizes="(max-width: 768px) 100vw, 600px"
-                        className="object-contain transition-transform duration-500 "
-                      />
-                    </div>
-
-                    {/* subtle overlay */}
-                    <div className="absolute inset-0 bg-linear-to-t from-black/40 via-black/0 to-transparent" />
-                  </div>
-                )}
-
-                {/* ================= META ================= */}
-                <div className="flex items-center gap-2 text-gray-400 text-xs mb-2">
-                  <Calendar size={14} />
-                  {card.date}
-                </div>
-
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {card.title}
-                </h3>
-
-                <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
-                  {card.description}
-                </p>
-
-                {/* ================= TAGS ================= */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {card.tags.map((tag, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-[11px] rounded-full
-                      bg-blue-500/10 text-blue-400 border border-blue-500/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* ================= ACTIONS ================= */}
-                <div className="flex gap-3">
-                  {card.githubUrl && (
-                    <ActionBtn href={card.githubUrl} icon={Github} label="Code" />
-                  )}
-                  {card.liveUrl && (
-                    <ActionBtn href={card.liveUrl} icon={ExternalLink} label="Live" />
-                  )}
-                  {card.docUrl && (
-                    <ActionBtn href={card.docUrl} icon={FileInput} label="Doc" />
-                  )}
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+      {/* Heading */}
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-5xl font-bold text-white">
+          Company<span className="text-blue-500"> Certifications</span>
+        </h2>
       </div>
-    </section>
-  );
-}
 
-/* ================= BUTTON ================= */
-function ActionBtn({ href, icon: Icon, label }) {
-  return (
-    <motion.a
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      href={href}
-      target="_blank"
-      onClick={(e) => e.stopPropagation()}
-      className="flex-1 text-center py-2.5 rounded-lg
-      bg-[#111827] hover:bg-[#1F2937]
-      text-white text-sm transition"
+      {/* Arrows */}
+      <div
+        onClick={() => scroll("left")}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white/90 hover:bg-white p-3 rounded-full shadow-md"
+      >
+        <ChevronLeft size={24} />
+      </div>
+
+      <div
+        onClick={() => scroll("right")}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white/90 hover:bg-white p-3 rounded-full shadow-md"
+      >
+        <ChevronRight size={24} />
+      </div>
+
+      {/* Cards */}
+      <div
+        ref={scrollRef}
+        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar"
+      >
+        {certification.map((card) => {
+          const isActive = activeCard === card.id;
+
+
+          return (
+            <motion.div
+              key={card.id}
+              whileHover={{ y: -6 }}
+              onClick={() => setPreview(card)} // 👈 open modal
+              className={`min-w-[340px] md:min-w-[400px] group cursor-pointer rounded-2xl p-4
+              bg-white/5 backdrop-blur-md border border-white/10
+              transition-all duration-300
+              ${
+                isActive
+                  ? "scale-105 shadow-[0_0_40px_rgba(59,130,246,0.6)]"
+                  : "hover:border-blue-400 hover:shadow-[0_0_25px_rgba(59,130,246,0.4)]"
+              }`}
+            >
+
+           
+              {/* Image */}
+              <div className="relative rounded-xl overflow-hidden mb-4">
+                <div className="relative w-full h-52">
+                  <Image
+                    src={card.imgUrl}
+                    alt={card.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition duration-300"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+              </div>
+
+ <span className="text-blue-400 text-sm flex items-center gap-2 mb-2">
+                      <Calendar size={16} />
+                      {card.date}
+                    </span>
+              {/* Content */}
+              <h3 className="text-lg font-semibold text-blue-400 mb-1 line-clamp-1">
+                {card.title}
+              </h3>
+
+              <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                {card.description}
+              </p>
+
+              <div className="flex flex-wrap gap-2">
+                {card.tags?.map((tag, i) => (
+                  <span
+                    key={i}
+                    className="px-2 py-1 text-xs rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* 🔥 MODAL */}
+     <AnimatePresence>
+  {preview && (
+    <motion.div
+      className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
-      <Icon size={14} className="inline mr-1" />
-      {label}
-    </motion.a>
+      {/* Close Button */}
+      <button
+        onClick={() => setPreview(null)}
+        className="absolute top-6 right-6 text-white bg-white/10 hover:bg-white/20 p-2 rounded-full"
+      >
+        <X size={24} />
+      </button>
+
+      {/* Modal Card */}
+      <motion.div
+        initial={{ scale: 0.85, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.85, opacity: 0 }}
+        className="w-[95%] md:w-[80%] lg:w-[70%] max-h-[90vh] bg-[#0B0F19] rounded-2xl overflow-hidden shadow-2xl"
+      >
+        
+        {/* IMAGE FIX */}
+        <div className="relative w-full h-[60vh] bg-black flex items-center justify-center">
+          <Image
+            src={preview.imgUrl}
+            alt={preview.title}
+            fill
+            className="object-contain p-4"
+          />
+        </div>
+
+        {/* CONTENT */}
+        <div className="p-6 border-t border-white/10">
+          <h3 className="text-xl md:text-2xl text-blue-400 font-semibold">
+            {preview.title}
+          </h3>
+
+          <p className="text-gray-400 mt-2 text-sm md:text-base">
+            {preview.description}
+          </p>
+        </div>
+
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+    </div>
   );
 }

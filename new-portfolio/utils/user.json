@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "value": "50",
+        "label": "REST APIs"
+    },
+    {
+        "id": 2,
+        "value": "8",
+        "label": "Projects"
+    },
+    {
+        "id": 3,
+        "value": "1",
+        "label": "AWS Cloud Deploy"
+    },
+    {
+        "id": 4,
+        "value": "5",
+        "label": "Upcoming Full-Stack Projects powered by AI"
+    }
+]

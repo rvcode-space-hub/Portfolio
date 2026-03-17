@@ -1,0 +1,78 @@
+[
+    {
+        "id": 1,
+        "title": "IBM CO0101EN Certificate - CognitiveClass Docker",
+        "description": "Completed IBM Cognitive Class certification on Docker, covering containerization, image creation, Docker CLI, volumes, networking, and deploying applications using containers.",
+        "tags": [
+            "Docker",
+            "Containerization",
+            "DevOps",
+            "Cloud",
+            "IBM Cognitive Class"
+        ],
+        "date": "May 21, 2025",
+        "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773726237/Portfolio-web-app/Certifications/file_xorxpz.jpg"
+    },
+    {
+        "id": 2,
+        "title": "PEARLTHOUGHTS - Backend Developer",
+        "description": "Worked as a Backend Developer, building scalable REST APIs and implementing secure authentication systems. Contributed to server-side logic, database design, and performance optimization using Node.js and MongoDB.",
+        "tags": [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "REST API",
+            "JWT",
+            "Backend Development",
+            "Authentication",
+            "Scalability"
+        ],
+        "date": "14 Jul 2025 – 8 Aug 2025",
+        "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773726341/Portfolio-web-app/Certifications/file_qxuwhu.jpg"
+    },
+    {
+        "id": 3,
+        "title": "Python Certification",
+        "description": "Completed Python certification covering core programming concepts, data structures, problem-solving, and scripting for backend and automation tasks.",
+        "tags": [
+            "Python",
+            "Data Structures",
+            "Algorithms",
+            "Problem Solving",
+            "Scripting",
+            "Backend Basics"
+        ],
+        "date": "May 4, 2025",
+        "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773726424/Portfolio-web-app/Certifications/file_rbgtxt.jpg"
+    },
+    {
+        "id": 4,
+        "title": "SCALER - Low-Level Design of Payment Apps",
+        "description": "Learned low-level system design concepts focused on building scalable payment applications, including concurrency, design patterns, database structuring, and transaction handling.",
+        "tags": [
+            "Low Level Design",
+            "System Design",
+            "Payment Systems",
+            "Design Patterns",
+            "Scalability",
+            "Concurrency"
+        ],
+        "date": "16th September 2025",
+        "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773726483/Portfolio-web-app/Certifications/file_ak12oz.jpg"
+    },
+    {
+        "id": 5,
+        "title": "TechSonix Certificate",
+        "description": "Completed technical training program focusing on web development fundamentals, including frontend and backend technologies, project building, and real-world application development.",
+        "tags": [
+            "Web Development",
+            "Frontend",
+            "Backend",
+            "JavaScript",
+            "Projects",
+            "Full Stack Basics"
+        ],
+        "date": "1 May, 2025 - 30 May, 2025",
+        "imgUrl": "https://res.cloudinary.com/dgmzre11v/image/upload/v1773726535/Portfolio-web-app/Certifications/file_p15gea.jpg"
+    }
+]

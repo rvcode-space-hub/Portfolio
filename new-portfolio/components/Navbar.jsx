@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useModal } from "./ModalContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { preview } = useModal(); // ✅ FIXED
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,10 +27,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full fixed top-0 z-50 transition-all duration-300
-      ${
-        isScrolled
-          ? "bg-[#0B0F19]/90 backdrop-blur-md shadow-lg border-b border-gray-100"
+      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
+        preview
+          ? "opacity-0 pointer-events-none" // 🔥 modal open → hide navbar
+          : isScrolled
+          ? "bg-[#0B0F19]/70 backdrop-blur-xl shadow-lg border-b border-white/10"
           : "bg-transparent"
       }`}
     >

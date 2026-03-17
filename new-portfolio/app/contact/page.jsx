@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'motion/react';
+import { useState } from "react";
+import { motion } from "motion/react";
 import {
   Send,
   Mail,
@@ -9,17 +9,17 @@ import {
   MessageSquare,
   MapPin,
   Clock
-} from 'lucide-react';
+} from "lucide-react";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
   });
 
-  const [status, setStatus] = useState(''); // success | error | ''
+  const [status, setStatus] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -29,13 +29,13 @@ export default function ContactForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus('');
+    setStatus("");
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
+      const res = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
         body: JSON.stringify(formData)
       });
@@ -43,185 +43,174 @@ export default function ContactForm() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || 'Failed to send message');
+        throw new Error(data.message || "Failed to send message");
       }
 
-      setStatus('success');
+      setStatus("success");
       setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
       });
 
-      setTimeout(() => setStatus(''), 3000);
+      setTimeout(() => setStatus(""), 3000);
     } catch (error) {
-      console.error('Client Mail Error:', error);
-      setStatus('error');
+      console.error(error);
+      setStatus("error");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="bg-linear-to-br from-gray-900 via-blue-950 to-black py-20 px-4"
-    >
-      <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative py-24 px-6 bg-black text-white overflow-hidden">
+
+      {/* BACKGROUND GLOW */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-600/20 blur-[160px]"></div>
+
+      <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
 
         {/* LEFT CONTENT */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-white"
         >
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">
-            Let’s Work Together
+          <h2 className="text-4xl font-bold mb-6">
+            Let's Build Something
+            <span className="text-blue-500"> Great</span>
           </h2>
 
-          <p className="text-gray-300 mb-6 leading-relaxed text-sm md:text-xl">
-            Looking for a backend developer who can build scalable APIs,
-            secure authentication systems, and production-ready backend
-            solutions?
+          <p className="text-gray-300 text-lg leading-relaxed mb-8">
+            I'm always open to discussing backend development projects,
+            scalable API systems, or exciting job opportunities.
           </p>
 
-          <p className="text-gray-300 mb-8 text-sm md:text-xl leading-relaxed">
-            I specialize in Node.js, NestJS, databases, and cloud-based
-            backend systems.
-          </p>
+          <div className="space-y-5 text-gray-300">
 
-          <div className="space-y-3 text-sm md:text-lg text-gray-300">
-            <p className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-blue-400" />
-              India (Remote-friendly)
-            </p>
-            <p className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-blue-400" />
+            <div className="flex items-center gap-3">
+              <MapPin className="text-blue-500" size={18} />
+              India (Remote Friendly)
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Mail className="text-blue-500" size={18} />
               infroweb.services@gmail.com
-            </p>
-            <p className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-blue-400" />
-              Usually responds within 24 hours
-            </p>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Clock className="text-blue-500" size={18} />
+              Usually replies within 24 hours
+            </div>
+
           </div>
         </motion.div>
 
         {/* FORM */}
         <motion.form
           onSubmit={handleSubmit}
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-xl shadow-xl p-6 border border-gray-200 space-y-4"
+          className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 space-y-6 shadow-xl"
         >
-          <div className="text-center mb-4">
-            <h3 className="text-2xl font-bold text-gray-900">
-              Get In Touch
-            </h3>
-            <p className="text-sm text-gray-500">
-              Have a project in mind? Let’s talk.
-            </p>
-          </div>
 
-          {/* Name */}
-          <div>
-            <label className="text-sm font-medium text-gray-700">Name</label>
-            <div className="relative mt-1">
-              <User className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-              <input
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full pl-9 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-                placeholder="John Doe"
-              />
-            </div>
-          </div>
+          <h3 className="text-2xl font-semibold text-center mb-4">
+            Send a Message
+          </h3>
 
-          {/* Email */}
-          <div>
-            <label className="text-sm font-medium text-gray-700">Email</label>
-            <div className="relative mt-1">
-              <Mail className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
-              <input
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full pl-9 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
-                placeholder="john@example.com"
-              />
-            </div>
-          </div>
-
-          {/* Subject */}
-          <div>
-            <label className="text-sm font-medium text-gray-700">Subject</label>
-            <select
-              name="subject"
-              value={formData.subject}
+          {/* NAME */}
+          <div className="relative">
+            <User className="absolute left-3 top-3 text-gray-400" size={18} />
+            <input
+              name="name"
+              value={formData.name}
               onChange={handleChange}
               required
-              className="w-full mt-1 py-2 px-3 border rounded-md focus:ring-2 focus:ring-blue-500"
-            >
-              <option value="">Select a subject</option>
-              <option value="Project Inquiry">Project Inquiry</option>
-              <option value="Freelance Work">Freelance Work</option>
-              <option value="Job Opportunity">Job Opportunity</option>
-              <option value="General Question">General Question</option>
-            </select>
-          </div>
-
-          {/* Message */}
-          <div>
-            <label className="text-sm font-medium text-gray-700">Message</label>
-            <textarea
-              name="message"
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full mt-1 py-2 px-3 border rounded-md focus:ring-2 focus:ring-blue-500 resize-none"
+              placeholder="Your Name"
+              className="w-full pl-10 py-3 bg-black/40 border border-white/10 rounded-lg focus:border-blue-500 outline-none transition"
             />
           </div>
 
-          {/* Button */}
-          <motion.button
-            type="submit"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            disabled={loading}
-            className="w-full bg-blue-700 text-white py-2 rounded-md hover:bg-blue-800 transition flex items-center justify-center gap-2 font-semibold disabled:opacity-60"
+          {/* EMAIL */}
+          <div className="relative">
+            <Mail className="absolute left-3 top-3 text-gray-400" size={18} />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder="Your Email"
+              className="w-full pl-10 py-3 bg-black/40 border border-white/10 rounded-lg focus:border-blue-500 outline-none transition"
+            />
+          </div>
+
+          {/* SUBJECT */}
+          <select
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            required
+            className="w-full py-3 px-4 bg-black/40 border border-white/10 rounded-lg focus:border-blue-500 outline-none"
           >
-            {loading ? 'Sending...' : (
+            <option value="">Select Subject</option>
+            <option value="Project Inquiry">Project Inquiry</option>
+            <option value="Freelance Work">Freelance Work</option>
+            <option value="Job Opportunity">Job Opportunity</option>
+            <option value="General Question">General Question</option>
+          </select>
+
+          {/* MESSAGE */}
+          <div className="relative">
+            <MessageSquare
+              className="absolute left-3 top-3 text-gray-400"
+              size={18}
+            />
+            <textarea
+              name="message"
+              rows="4"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              placeholder="Write your message..."
+              className="w-full pl-10 py-3 bg-black/40 border border-white/10 rounded-lg focus:border-blue-500 outline-none resize-none"
+            />
+          </div>
+
+          {/* BUTTON */}
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            disabled={loading}
+            className="w-full py-3 rounded-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 transition flex items-center justify-center gap-2"
+          >
+            {loading ? "Sending..." : (
               <>
-                <Send className="h-4 w-4" />
+                <Send size={16} />
                 Send Message
               </>
             )}
           </motion.button>
 
-          {/* Status Messages */}
-          {status === 'success' && (
-            <p className="text-sm text-green-600 text-center">
-              Thanks for reaching out! I’ll get back to you soon 🚀
+          {/* STATUS */}
+          {status === "success" && (
+            <p className="text-green-400 text-center text-sm">
+              Message sent successfully 🚀
             </p>
           )}
 
-          {status === 'error' && (
-            <p className="text-sm text-red-600 text-center">
-              Something went wrong. Please try again ❌
+          {status === "error" && (
+            <p className="text-red-400 text-center text-sm">
+              Failed to send message ❌
             </p>
           )}
+
         </motion.form>
       </div>
-    </motion.section>
+    </section>
   );
 }

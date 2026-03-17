@@ -3,7 +3,8 @@ import cloudinary from "@/app/lib/cloudinary";
 export async function POST(req) {
   try {
     const formData = await req.formData();
-    const file = formData.get("file"); // image OR pdf
+    const file = formData.get("file");
+    const category = formData.get("category"); // 👈 NEW
 
     if (!file) {
       return Response.json(
@@ -12,7 +13,6 @@ export async function POST(req) {
       );
     }
 
-    // ✅ size limit (10MB)
     const MAX_SIZE = 10 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
       return Response.json(
@@ -26,39 +26,52 @@ export async function POST(req) {
 
     const isPdf = file.type === "application/pdf";
 
-    const fileName = isPdf
-      ? `document_${Date.now()}`
-      : `image_${Date.now()}`;
+    // 🔥 Folder Logic
+    let folder = "Portfolio-web-app";
 
-   const result = await new Promise((resolve, reject) => {
-  const uploadOptions = {
-    folder: isPdf ? "documents" : "Portfolio-web-app",
-    resource_type: isPdf ? "raw" : "image",
-    use_filename: true,
-    unique_filename: true,
-  };
-
-  // ✅ PDF specific handling
-  if (isPdf) {
-    uploadOptions.public_id = fileName.replace(/\.pdf$/i, ""); // no extension here
-  }
-
-  const stream = cloudinary.uploader.upload_stream(
-    uploadOptions,
-    (error, result) => {
-      if (error) return reject(error);
-      resolve(result);
+    if (isPdf) {
+      folder += "/documents";
+    } else {
+      if (category === "project") {
+        folder += "/Projects";
+      } else if (category === "certification") {
+        folder += "/Certifications";
+      } else {
+        folder += "/others"; // fallback
+      }
     }
-  );
 
-  stream.end(buffer); // ✅ buffer must be complete
-});
+    const fileName = `${category || "file"}_${Date.now()}`;
+
+    const result = await new Promise((resolve, reject) => {
+      const uploadOptions = {
+        folder,
+        resource_type: isPdf ? "raw" : "image",
+        use_filename: true,
+        unique_filename: true,
+      };
+
+      if (isPdf) {
+        uploadOptions.public_id = fileName;
+      }
+
+      const stream = cloudinary.uploader.upload_stream(
+        uploadOptions,
+        (error, result) => {
+          if (error) return reject(error);
+          resolve(result);
+        }
+      );
+
+      stream.end(buffer);
+    });
 
     return Response.json(
       {
         message: "File uploaded successfully",
-        fileUrl: result.secure_url,      // 👈 DB me save karo
+        fileUrl: result.secure_url,
         public_id: result.public_id,
+        folder: folder, // 👈 debug ke liye useful
         type: isPdf ? "pdf" : "image",
       },
       { status: 200 }
