@@ -167,3 +167,50 @@ export default function CertificationsSection() {
     </div>
   );
 }
+
+
+
+
+
+  {/* RIGHT (IMAGE) */}
+        <motion.div
+          key={activeCard.imgUrl}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+        >
+          <div className="relative w-full h-[280px] md:h-[420px] lg:h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
+            <Image
+              src={activeCard.imgUrl}
+              alt={activeCard.title}
+              fill
+              className="object-contain p-4 hover:scale-105 transition"
+            />
+          </div>
+        </motion.div>
+
+        {/* Arrows */}
+        <button
+          onClick={prev}
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full"
+        >
+          <ChevronLeft />
+        </button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

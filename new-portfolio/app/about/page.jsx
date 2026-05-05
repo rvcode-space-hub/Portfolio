@@ -3,6 +3,7 @@
 
 import React from "react";
 import {motion} from "motion/react";
+import Experience from "./components/Experience";
 
 /* ---------------- SKILL CATEGORIES ---------------- */
 const skillCategories = {
@@ -246,158 +247,8 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* ================= EXPERIENCE ================= */}
-      <motion.div
-        initial={{opacity: 0}}
-        whileInView={{opacity: 1}}
-        viewport={{once: true}}
-        transition={{duration: 0.6}}
-        className="max-w-6xl mx-auto px-6 py-20"
-      >
-        <motion.h2
-          initial={{y: 20, opacity: 0}}
-          whileInView={{y: 0, opacity: 1}}
-          viewport={{once: true}}
-          transition={{duration: 0.5}}
-          className="text-3xl font-bold text-blue-500 mb-14"
-        >
-          Experience
-        </motion.h2>
-
-        <div className="relative pl-6 space-y-12">
-          {/* Vertical Line */}
-          <div className="absolute left-2 top-0 h-full w-px bg-blue-500/30" />
-
-          {/* CARD WRAPPER */}
-          {[
-            /* Live Project */
-            {
-              dot: "bg-blue-500 shadow-lg shadow-blue-500/50",
-              content: (
-                <>
-                  <h3 className="text-xl font-semibold text-white">
-                    Backend Developer – Remote (Live Project)
-                  </h3>
-                  <p className="text-sm text-blue-400 mt-1">
-                    ZeTheta’s • Jan 2026 – Present
-                  </p>
-                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
-                    <li>
-                      Working on a live remote backend project using{" "}
-                      <span className="text-blue-400 font-medium">
-                        Node.js, Express, MongoDB, Redis, and REST APIs
-                      </span>
-                      .
-                    </li>
-                    <li>
-                      Designing secure and scalable APIs with authentication and
-                      role-based access control.
-                    </li>
-                    <li>
-                      Implementing service-layer architecture and optimized
-                      queries.
-                    </li>
-                    <li>Collaborating remotely using Git-based workflows.</li>
-                  </ul>
-                </>
-              ),
-            },
-
-            /* Backend Intern */
-            {
-              dot: "bg-blue-500/60",
-              content: (
-                <>
-                  <h3 className="text-xl font-semibold">
-                    Backend Developer Intern
-                  </h3>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Pearl-Thoughts • Jul – Aug 2025
-                  </p>
-                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
-                    <li>Designed scalable RESTful APIs for an LMS platform.</li>
-                    <li>
-                      <span className="text-blue-400 font-medium">Tech:</span>{" "}
-                      Node.js, Express.js, MongoDB, JWT.
-                    </li>
-                    <li>Improved API performance and DB efficiency.</li>
-                  </ul>
-                </>
-              ),
-            },
-
-            /* Web Intern */
-            {
-              dot: "bg-blue-500/40",
-              content: (
-                <>
-                  <h3 className="text-xl font-semibold">
-                    Web Developer Intern
-                  </h3>
-                  <p className="text-sm text-gray-400 mt-1">
-                    Techsonix • May 2025
-                  </p>
-                  <ul className="text-gray-300 mt-4 space-y-3 list-disc list-inside">
-                    <li>Built responsive and user-friendly interfaces.</li>
-                    <li>
-                      <span className="text-blue-400 font-medium">Tech:</span>{" "}
-                      React, Tailwind CSS, JavaScript.
-                    </li>
-                  </ul>
-                </>
-              ),
-            },
-
-            /* MIS Operator */
-            {
-              dot: "bg-blue-500/30",
-              content: (
-                <>
-                  <h3 className="text-xl font-semibold">MIS Operator</h3>
-                  <p className="text-sm text-gray-400 mt-1">
-                    JKM Security Services • Mar 2022 – Dec 2025
-                  </p>
-                  <ul className="text-gray-300 mt-4 space-y-2 list-disc list-inside">
-                    <li>Prepared daily / weekly / monthly MIS reports.</li>
-                    <li>
-                      Cleaned data using{" "}
-                      <span className="text-blue-400 font-medium">
-                        Excel & Power Query
-                      </span>
-                      .
-                    </li>
-                    <li>
-                      Automated reports (↓ manual work by{" "}
-                      <span className="text-blue-400 font-medium">30%</span>).
-                    </li>
-                  </ul>
-                </>
-              ),
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{opacity: 0, y: 30}}
-              whileInView={{opacity: 1, y: 0}}
-              viewport={{once: true}}
-              transition={{duration: 0.45, delay: i * 0.08}}
-              className="relative"
-            >
-              <motion.span
-                initial={{scale: 0}}
-                whileInView={{scale: 1}}
-                viewport={{once: true}}
-                transition={{type: "spring", stiffness: 100}}
-                className={`absolute -left-1.5 top-2 w-4 h-4 rounded-full ${item.dot}`}
-              />
-
-              <div className="border border-blue-500/20 rounded-2xl p-6 bg-white/5 hover:border-blue-400 transition">
-                {item.content}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
+{/* ================= EXPERIENCE ================= */}
+      <Experience/>
 
       {/* ================= EDUCATION ================= */}
       <motion.div
